@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<div id="table-container">
+</div>
+
+<script type="text/javascript">
+
+function TableFactory(){
+}
+
+TableFactory.prototype.createTable = function(rowCount, colCount){
+  var tableElement = document.createElement("table");
+  var trElement;
+  var tdElement;
+  for (var i = 0; i <rowCount; i++) {
+    trElement = document.createElement("tr");
+    for (var j = 0; j <colCount; j++) {
+      tdElement = document.createElement("td");
+      trElement.appendChild(tdElement);
+    };    
+    tableElement.appendChild(trElement);
+  };
+  
+
+  function changeClass(element){
+    if(element.classList.contains("active")){
+      element.classList.remove("active");
+    } else{
+      element.classList.add("active");
+    };
+  };
+
+  tableElement.addEventListener("click",function(){
+    var t=event.target||event.srcElement; changeClass(t);
+  });
+
+  var styleElement = document.createElement("style");
+  styleElement.innerHTML="table,tr,td{border:1px solid #000;}table{width:80%;border-collapse:collapse;}td{height:20px;background-color:#FFD700;}td.active{background-color:#3CB371;}"
+  document.head.appendChild(styleElement);
+
+  return tableElement;
+};
+
+var tableFactory = new TableFactory();
+var container = document.getElementById("table-container");
+
+container.appendChild(tableFactory.createTable(3,3));
+
+
+
+</script>
+</body>
+</html>
