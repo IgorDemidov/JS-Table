@@ -9,7 +9,6 @@
 </div>
 
 <script type="text/javascript">
-
 function TableFactory(){
 }
 
@@ -22,10 +21,9 @@ TableFactory.prototype.createTable = function(rowCount, colCount){
     for (var j = 0; j <colCount; j++) {
       tdElement = document.createElement("td");
       trElement.appendChild(tdElement);
-    };    
+    };
     tableElement.appendChild(trElement);
   };
-  
 
   function changeClass(element){
     if(element.classList.contains("active")){
@@ -34,7 +32,6 @@ TableFactory.prototype.createTable = function(rowCount, colCount){
       element.classList.add("active");
     };
   };
-
   tableElement.addEventListener("click",function(){
     var t=event.target||event.srcElement; changeClass(t);
   });
@@ -48,10 +45,7 @@ TableFactory.prototype.createTable = function(rowCount, colCount){
 
 var tableFactory = new TableFactory();
 var container = document.getElementById("table-container");
-
 container.appendChild(tableFactory.createTable(3,3));
-
-
 
 </script>
 </body>
